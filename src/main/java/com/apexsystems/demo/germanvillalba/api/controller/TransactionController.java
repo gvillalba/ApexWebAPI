@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/transaction")
 public class TransactionController {
-
     private final TransactionService transactionService;
 
     @Autowired
@@ -22,10 +21,10 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @PostMapping(value = "")
-    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction){
+    @PostMapping
+    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
         Transaction savedTransaction = this.transactionService.createTransaction(transaction);
-        return ResponseEntity.ok(savedTransaction);
+        return ResponseEntity.ok().body(savedTransaction);
     }
 
     @GetMapping(value = "/{transactionId}")

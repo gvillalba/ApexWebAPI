@@ -11,8 +11,9 @@ import com.apexsystems.demo.germanvillalba.api.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.*;
+
+import static com.apexsystems.demo.germanvillalba.api.util.RewardsUtil.calculatePoints;
 
 @Service
 public class TransactionService {
@@ -23,7 +24,7 @@ public class TransactionService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public Transaction createTransaction(Transaction transaction){
+    public Transaction createTransaction(Transaction transaction) {
         return this.transactionRepository.save(transaction);
     }
 
@@ -88,23 +89,5 @@ public class TransactionService {
 
         }
         return pointsByMonth;
-    }
-
-    private long calculatePoints(long dollarAmount) {
-        long value = dollarAmount;
-        long points = 0;
-        value -= 50;
-        if (value <= 0) {
-            return 0;
-        }
-
-        if (value <= 50) {
-            points += value;
-        }
-        else {
-            points += 50;
-            points += 2 * (value - 50);
-        }
-        return points;
     }
 }

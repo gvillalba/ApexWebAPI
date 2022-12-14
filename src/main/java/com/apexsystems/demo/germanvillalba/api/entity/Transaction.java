@@ -6,10 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="transactions")
-public class Transaction {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+public class Transaction extends BaseEntity{
 
     @Column
     private Date date;
@@ -23,6 +20,13 @@ public class Transaction {
     public Transaction() {
         super();
         this.date = new Date();
+    }
+
+    public Transaction(long id, Date date, long amount, Client client) {
+        this.id = id;
+        this.date = date;
+        this.amount = amount;
+        this.client = client;
     }
 
     public Date getDate() {
@@ -39,14 +43,6 @@ public class Transaction {
 
     public void setAmount(long amount) {
         this.amount = amount;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public Client getClient() {

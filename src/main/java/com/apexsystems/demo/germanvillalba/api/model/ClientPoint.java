@@ -6,6 +6,9 @@ public class ClientPoint {
     private Client client;
     private long points;
 
+    public ClientPoint(){
+    }
+
     public ClientPoint(Client client, long points) {
         this.client = client;
         this.points = points;

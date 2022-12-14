@@ -4,21 +4,21 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="clients")
-public class Client {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+public class Client extends BaseEntity {
 
     private String firstname;
     private String lastname;
     private String ssn;
 
-    public long getId() {
-        return id;
+    public Client() {
+        super();
     }
 
-    public void setId(long id) {
+    public Client(long id, String firstname, String lastname, String ssn) {
         this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.ssn = ssn;
     }
 
     public String getFirstname() {

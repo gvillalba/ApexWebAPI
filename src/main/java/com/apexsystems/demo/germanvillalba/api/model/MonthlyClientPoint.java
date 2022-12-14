@@ -8,6 +8,9 @@ public class MonthlyClientPoint {
     private Client client;
     private Map<Integer, Long> monthlyPoints;
 
+    public MonthlyClientPoint() {
+    }
+
     public MonthlyClientPoint(Client client, Map<Integer, Long> monthlyPoints) {
         this.client = client;
         this.monthlyPoints = monthlyPoints;
